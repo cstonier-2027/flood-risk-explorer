@@ -157,9 +157,7 @@ section[id] { scroll-margin-top: 72px; }
 <section class="hero">
   <p class="eyebrow">Flood planning for homeowners</p>
   <h1>Is your home ready for the floods of 2055?</h1>
-  <p class="lede">Rising seas and heavier rain are making floods more frequent every year. Plug in your home's
-  flood risk and see what it would cost to <b>elevate</b>, <b>insure</b>, or <b>relocate</b>, and which choice
-  holds up over the life of a 30-year mortgage.</p>
+  <p class="lede">Floods are getting more frequent. Compare the 30-year cost to <b>elevate</b>, <b>insure</b>, or <b>relocate</b>.</p>
   <a class="cta" href="#tool">Check your home</a>
 </section>
 
@@ -168,67 +166,63 @@ section[id] { scroll-margin-top: 72px; }
   <div class="grid3">
     <div class="card">
       <div class="icon" aria-hidden="true">1%</div>
-      <h3>The "100-year flood" myth</h3>
-      <p class="muted">A 100-year flood has a <b>1% chance of happening in any year</b>, not once a century.
-      Across a 30-year mortgage, that's roughly a <b>1 in 4</b> chance of at least one flood, before climate change is even counted.</p>
+      <h3>"100-year" doesn't mean once a century</h3>
+      <p class="muted">It's a <b>1% chance every year</b>, or about <b>1 in 4</b> over a 30-year mortgage.</p>
     </div>
     <div class="card">
       <div class="icon" aria-hidden="true">↑</div>
-      <h3>The water line keeps moving up</h3>
-      <p class="muted">Each inch of sea-level rise lifts every future flood. Because big floods are only slightly taller than
-      small ones, a modest rise can make flooding <b>several times more common</b>. A home with a 1% yearly risk today could face 3% by the time the loan is paid off.</p>
+      <h3>The water line is rising</h3>
+      <p class="muted">A small rise in sea level makes floods <b>several times more common</b>.</p>
     </div>
     <div class="card">
       <div class="icon" aria-hidden="true">×</div>
-      <h3>Three ways to cut your risk</h3>
-      <p class="muted">Flood risk is <i>hazard</i> × <i>exposure</i> × <i>vulnerability</i>. You can't stop the water,
-      but elevating lowers your exposure, insurance limits your financial vulnerability, and relocating takes you out of harm's way.</p>
+      <h3>Risk = hazard × exposure × vulnerability</h3>
+      <p class="muted">Elevating cuts exposure, insurance cuts financial vulnerability, and relocating removes both.</p>
     </div>
   </div>
 </section>
 
 <section id="tool">
   <h2>Your home</h2>
-  <p class="muted">Describe your flood risk with the first three sliders, then choose how high to elevate.</p>
   <div class="sliders">
     <div class="card">
       <span class="tag">Hazard today</span>
-      <div class="slider-head"><label for="p0">Chance your floor floods in any given year (today)</label><span class="slider-val" id="p0Val"></span></div>
+      <div class="slider-head"><label for="p0">Yearly chance your floor floods</label><span class="slider-val" id="p0Val"></span></div>
       <input type="range" id="p0" min="0.1" max="10" step="0.1" value="1">
-      <p class="slider-help">FEMA's "Special Flood Hazard Area" (the 100-year floodplain) is the zone with at least a 1% yearly chance. 0.2% is the edge of the 500-year floodplain; 10% means a 10-year flood reaches your floor.</p>
+      <p class="slider-help">1% = FEMA's 100-year floodplain. 0.2% = 500-year floodplain.</p>
     </div>
     <div class="card">
       <span class="tag">Climate change</span>
-      <div class="slider-head"><label for="slr">Rise in flood water levels over the next 30 years</label><span class="slider-val" id="slrVal"></span></div>
+      <div class="slider-head"><label for="slr">Water-level rise over 30 years</label><span class="slider-val" id="slrVal"></span></div>
       <input type="range" id="slr" min="0" max="3" step="0.1" value="1">
-      <p class="slider-help">NOAA projects about 1 ft of sea-level rise along U.S. coasts between 2020 and 2050 (more on the western Gulf Coast). 0 ft means no climate change. The rise is added gradually, year by year.</p>
+      <p class="slider-help">NOAA projects about 1 ft along U.S. coasts by 2050. 0 = no climate change.</p>
     </div>
     <div class="card">
       <span class="tag">Your location</span>
-      <div class="slider-head"><label for="d">Height difference between a 10-year and a 100-year flood</label><span class="slider-val" id="dVal"></span></div>
+      <div class="slider-head"><label for="d">Height gap: 10-year vs. 100-year flood</label><span class="slider-val" id="dVal"></span></div>
       <input type="range" id="d" min="0.5" max="5" step="0.1" value="2">
-      <p class="slider-help">In flat coastal areas, a rare flood is only a little higher than a common one, so a small rise in sea level makes floods much more frequent. Where floods vary a lot in height (steep river valleys), the same rise matters less. Every foot of rise multiplies flood frequency by 10<sup>1/this&nbsp;number</sup>.</p>
+      <p class="slider-help">Small gap (flat coasts): each foot of rise multiplies floods a lot. Large gap (river valleys): less.</p>
     </div>
     <div class="card">
       <span class="tag">Your plan</span>
       <div class="slider-head"><label for="raise">Elevate the home by</label><span class="slider-val" id="raiseVal"></span></div>
       <input type="range" id="raise" min="0" max="10" step="0.5" value="4">
-      <p class="slider-help">Lifting the home onto a taller foundation puts the living floor above more floods. It costs a lot up front, but it also lowers your insurance premium for as long as you own the home.</p>
+      <p class="slider-help">Costly up front, but cuts flood odds and insurance premiums.</p>
     </div>
   </div>
 
   <details>
-    <summary>Advanced settings: home value, costs and insurance</summary>
+    <summary>Advanced settings</summary>
     <div class="assume card" style="margin-top:12px">
-      <div><label for="value">Value of the building (not the land), $</label><input id="value" type="number" min="50000" max="2000000" step="10000" value="250000"></div>
-      <div><label for="price">Sale price of the home if you move, $</label><input id="price" type="number" min="50000" max="3000000" step="10000" value="325000"></div>
-      <div><label for="elevBase">Base cost to elevate the house, $</label><input id="elevBase" type="number" min="0" max="500000" step="5000" value="100000"></div>
-      <div><label for="elevPerFt">Extra elevation cost per foot, $</label><input id="elevPerFt" type="number" min="0" max="50000" step="1000" value="5000"></div>
-      <div><label for="ded">Insurance deductible per flood, $</label><input id="ded" type="number" min="0" max="10000" step="250" value="2000"></div>
-      <div><label for="load">Insurance price markup over expected payouts, %</label><input id="load" type="number" min="0" max="200" step="5" value="35"></div>
-      <div><label for="moveCost">Cost of selling and moving, % of sale price</label><input id="moveCost" type="number" min="0" max="20" step="0.5" value="8"></div>
-      <div><label for="discount">Price cut buyers demand for flood risk, % of sale price</label><input id="discount" type="number" min="0" max="30" step="0.5" value="7"></div>
-      <div><label for="years">Years you plan to stay</label><input id="years" type="number" min="5" max="50" step="1" value="30"></div>
+      <div><label for="value">Building value (not land), $</label><input id="value" type="number" min="50000" max="2000000" step="10000" value="250000"></div>
+      <div><label for="price">Home sale price, $</label><input id="price" type="number" min="50000" max="3000000" step="10000" value="325000"></div>
+      <div><label for="elevBase">Base elevation cost, $</label><input id="elevBase" type="number" min="0" max="500000" step="5000" value="100000"></div>
+      <div><label for="elevPerFt">Elevation cost per foot, $</label><input id="elevPerFt" type="number" min="0" max="50000" step="1000" value="5000"></div>
+      <div><label for="ded">Insurance deductible, $</label><input id="ded" type="number" min="0" max="10000" step="250" value="2000"></div>
+      <div><label for="load">Insurance markup, %</label><input id="load" type="number" min="0" max="200" step="5" value="35"></div>
+      <div><label for="moveCost">Selling and moving costs, % of price</label><input id="moveCost" type="number" min="0" max="20" step="0.5" value="8"></div>
+      <div><label for="discount">Flood-risk price discount, % of price</label><input id="discount" type="number" min="0" max="30" step="0.5" value="7"></div>
+      <div><label for="years">Years you'll stay</label><input id="years" type="number" min="5" max="50" step="1" value="30"></div>
     </div>
   </details>
 </section>
@@ -238,12 +232,12 @@ section[id] { scroll-margin-top: 72px; }
   <div class="grid3">
     <div class="card stat"><div class="num" id="statNow"></div><div class="lbl" id="statNowLbl"></div></div>
     <div class="card stat"><div class="num" id="statRaised"></div><div class="lbl" id="statRaisedLbl"></div></div>
-    <div class="card stat"><div class="num" id="statFlood"></div><div class="lbl">Average repair bill when the floor floods, before insurance. Depends on how deep the water gets.</div></div>
+    <div class="card stat"><div class="num" id="statFlood"></div><div class="lbl">Average repair bill per flood, before insurance</div></div>
   </div>
 
   <div class="grid2" style="margin-top:16px">
     <div class="card chart-card">
-      <h3>Chance of a flood reaching your floor, year by year</h3>
+      <h3>Yearly chance of flooding</h3>
       <div class="chart-sub">Annual chance (%) vs. years from now</div>
       <div class="legend">
         <span style="--c:var(--s-uninsured)">Home as it is</span>
@@ -252,8 +246,8 @@ section[id] { scroll-margin-top: 72px; }
       <div class="chart-wrap"><canvas id="probChart" aria-label="Line chart of the annual chance of flooding each year" role="img"></canvas></div>
     </div>
     <div class="card chart-card">
-      <h3>Expected total cost of each choice over time</h3>
-      <div class="chart-sub">Cumulative cost in thousands of dollars vs. years from now (average outcome)</div>
+      <h3>Total cost over time</h3>
+      <div class="chart-sub">Expected cumulative cost (thousands of $) vs. years from now</div>
       <div class="legend">
         <span style="--c:var(--s-uninsured)">Stay uninsured</span>
         <span style="--c:var(--s-insured)">Insure</span>
@@ -270,47 +264,39 @@ section[id] { scroll-margin-top: 72px; }
       <caption id="tableCaption">Comparing the options over 30 years</caption>
       <thead><tr>
         <th scope="col">Option</th>
-        <th scope="col">Up-front cost ($)</th>
-        <th scope="col">Expected yearly costs, total ($)</th>
-        <th scope="col">Expected total cost ($)</th>
-        <th scope="col">Chance of at least one flood (%)</th>
-        <th scope="col">Your bill if one average flood hits ($)</th>
+        <th scope="col">Up-front ($)</th>
+        <th scope="col">Ongoing ($)</th>
+        <th scope="col">Expected total ($)</th>
+        <th scope="col">Chance of a flood (%)</th>
+        <th scope="col">Your bill per flood ($)</th>
       </tr></thead>
       <tbody id="tbody"></tbody>
     </table>
     </div>
-    <p class="muted" style="margin-top:10px;font-size:.92rem">"Expected" means the average over many possible futures. Yearly costs are flood repairs you pay yourself plus insurance premiums. Lowest expected total is in bold.</p>
+    <p class="muted" style="margin-top:10px;font-size:.92rem">Expected = average outcome. Ongoing = repairs you pay plus premiums. Cheapest in bold.</p>
   </div>
 
   <div class="note" style="margin-top:16px" id="takeaway"></div>
 </section>
 
 <section>
-  <h2 id="insights">What drives the results</h2>
+  <h2 id="insights">What to try</h2>
   <div class="grid2">
     <div class="card">
-      <h3>The later years matter most</h3>
-      <p class="muted">With no water-level rise, elevating rarely pays for itself. At 2–3 ft of rise, the uninsured and
-      insured cost lines curve sharply upward toward the end of the 30 years, while the elevated home's line stays nearly flat.
-      A risk that's rare when you buy can become routine before you sell.</p>
+      <h3>Turn up the water-level rise</h3>
+      <p class="muted">At 2–3 ft, costs for the unelevated home climb steeply in later years. The elevated home stays flat.</p>
     </div>
     <div class="card">
-      <h3>Location changes everything</h3>
-      <p class="muted">One foot of rise is a much bigger deal where the 10-year and 100-year floods are close in height
-      (try 0.5 ft) than where they're far apart (try 5 ft). The same climate change can mean very different outcomes
-      for two homes a few miles apart.</p>
+      <h3>Change the location</h3>
+      <p class="muted">The same rise hurts far more with a 0.5 ft height gap than a 5 ft one.</p>
     </div>
     <div class="card">
-      <h3>Insurance is protection, not a bargain</h3>
-      <p class="muted">The insured line usually runs slightly <i>above</i> the uninsured one, because premiums include a markup over
-      expected claims. What you're buying is protection from a single $50,000–$100,000 repair bill (see the last column of the table).
-      Most mortgage lenders also require flood insurance in the 100-year floodplain.</p>
+      <h3>Compare insured vs. uninsured</h3>
+      <p class="muted">Insurance costs a bit more on average. What it buys is protection from one huge repair bill.</p>
     </div>
     <div class="card">
-      <h3>Elevation buys safety first, savings second</h3>
-      <p class="muted">Each foot of elevation cuts flood odds by the same factor that a foot of water-level rise multiplies them.
-      Elevating more than the expected rise leaves you safer than you are today. But if your starting risk is low, the
-      up-front cost may never pay off. Try the 0.2% (500-year) setting.</p>
+      <h3>Drop the hazard to 0.2%</h3>
+      <p class="muted">At low risk, elevating rarely pays back its up-front cost.</p>
     </div>
   </div>
 </section>
@@ -319,36 +305,29 @@ section[id] { scroll-margin-top: 72px; }
   <h2>Methodology</h2>
   <div class="card">
     <ol>
-      <li><b>Flood chance each year.</b> Floods higher than a given level get rarer by a factor of 10 for every
-        <i>d</i> feet of height (<i>d</i> = the location slider). That's the steep tail of a standard (Gumbel) flood-frequency curve.
-        In year <i>t</i> the water has risen by <i>R·t/T</i> (R = rise slider, T = years you stay), so the yearly flood rate is
-        <br><code>rate(t) = rate₀ × 10^((R·t/T − raise) / d)</code>, with annual chance <code>= 1 − e^(−rate)</code>.</li>
-      <li><b>Chance of at least one flood</b> over the whole stay <code>= 1 − Π(1 − chance each year)</code>.
-        With no climate change and a 1% yearly chance: 1 − 0.99³⁰ = <b>26%</b>.</li>
-      <li><b>Damage per flood.</b> How deep the water gets above the floor follows the same curve (average depth = <i>d</i> / ln 10).
-        Each depth is turned into a percent of the building's value using the U.S. Army Corps of Engineers
-        depth–damage curve for a one-story house without a basement (e.g. 1 ft → 23%, 3 ft → 40%, 6 ft → 59%).</li>
-      <li><b>Insurance.</b> Covers damage up to the National Flood Insurance Program limit of $250,000 for the building, minus the deductible.
-        The premium is the expected payout each year plus the markup, so it rises as the risk rises (FEMA's Risk Rating 2.0 prices policies by actual risk).</li>
-      <li><b>Elevating.</b> One up-front cost (base + cost per foot), then lower flood chances and lower premiums from then on.</li>
-      <li><b>Moving.</b> Selling costs (agent fees, closing costs, moving) plus the price cut buyers demand for a flood-prone house, paid once. After that, no flood risk. You can't fully escape the risk by selling, because the next owner prices it in.</li>
+      <li><b>Yearly flood chance:</b> <code>rate(t) = rate₀ × 10^((R·t/T − elevation) / d)</code>, chance <code>= 1 − e^(−rate)</code>.
+        Floods get 10× rarer every <i>d</i> feet higher (a Gumbel flood-frequency tail); R is the water-level rise over T years.</li>
+      <li><b>At least one flood:</b> <code>1 − Π(1 − yearly chance)</code>. Check: 1% a year, no rise → 1 − 0.99³⁰ = <b>26%</b>.</li>
+      <li><b>Damage:</b> flood depth above the floor averages <i>d</i> / ln 10. Depth is converted to damage with the Army Corps
+        one-story curve (1 ft → 23%, 3 ft → 40%, 6 ft → 59% of building value).</li>
+      <li><b>Insurance:</b> pays damage up to the $250,000 NFIP limit, minus the deductible. Premium = expected payout + markup.</li>
+      <li><b>Elevate:</b> one up-front cost, then lower flood odds and premiums.</li>
+      <li><b>Relocate:</b> selling costs plus the price discount buyers take for flood risk.</li>
     </ol>
-    <p class="muted"><b>Simplifications:</b> costs aren't discounted for inflation or interest; at most one damaging flood per year;
-    contents (furniture, cars) aren't included; the price cut for flood risk is a fixed percentage and doesn't grow as the risk grows.
-    Real decisions also involve safety, stress, and being displaced while repairs happen.</p>
+    <p class="muted"><b>Not included:</b> inflation and interest, contents, more than one flood per year, and non-financial costs like safety and displacement.</p>
   </div>
 </section>
 
 <section id="sources">
   <h2>Sources</h2>
   <ol class="sources">
-    <li>FEMA, "Flood Zones" and the definition of the Special Flood Hazard Area (1% annual chance flood). fema.gov/flood-maps</li>
-    <li>Sweet, W.V. et al. (2022). <i>Global and Regional Sea Level Rise Scenarios for the United States</i>. NOAA Technical Report NOS 01. Projects roughly 10–12 inches of rise along U.S. coastlines from 2020 to 2050.</li>
-    <li>U.S. Army Corps of Engineers (2003). Economic Guidance Memorandum EGM 04-01, <i>Generic Depth-Damage Relationships for Residential Structures</i> (one-story, no basement curve).</li>
-    <li>FEMA, National Flood Insurance Program: building coverage limit of $250,000 for single-family homes, and Risk Rating 2.0 risk-based pricing. fema.gov/flood-insurance</li>
-    <li>FEMA P-312 (2014). <i>Homeowner's Guide to Retrofitting</i>, 3rd ed. Elevation is one of the main retrofitting options, typically costing tens to hundreds of thousands of dollars depending on house size and foundation.</li>
-    <li>Bernstein, A., Gustafson, M.T. &amp; Lewis, R. (2019). Disaster on the horizon: The price effect of sea level rise. <i>Journal of Financial Economics</i> 134(2), 253–272. Homes exposed to sea-level rise sell for about 7% less than similar unexposed homes.</li>
-    <li>Coles, S. (2001). <i>An Introduction to Statistical Modeling of Extreme Values</i>. Springer. (Gumbel / extreme value distributions for return periods.)</li>
+    <li>FEMA, Flood Zones: Special Flood Hazard Area (1% annual chance). fema.gov/flood-maps</li>
+    <li>Sweet, W.V. et al. (2022). <i>Global and Regional Sea Level Rise Scenarios for the United States</i>. NOAA Technical Report NOS 01.</li>
+    <li>U.S. Army Corps of Engineers (2003). EGM 04-01, <i>Generic Depth-Damage Relationships for Residential Structures</i>.</li>
+    <li>FEMA, National Flood Insurance Program and Risk Rating 2.0. fema.gov/flood-insurance</li>
+    <li>FEMA P-312 (2014). <i>Homeowner's Guide to Retrofitting</i>, 3rd ed.</li>
+    <li>Bernstein, A., Gustafson, M.T. &amp; Lewis, R. (2019). Disaster on the horizon: The price effect of sea level rise. <i>Journal of Financial Economics</i> 134(2), 253–272.</li>
+    <li>Coles, S. (2001). <i>An Introduction to Statistical Modeling of Extreme Values</i>. Springer.</li>
   </ol>
 </section>
 
@@ -357,8 +336,7 @@ section[id] { scroll-margin-top: 72px; }
   <div class="footer-inner">
     <div>
       <div class="brand"><span class="logo" aria-hidden="true"></span>HighGround</div>
-      <p>Estimates are for planning and education only, not financial or insurance advice. For a real decision, look up your
-      address on the FEMA Flood Map Service Center, get an elevation certificate, and request an insurance quote.</p>
+      <p>For planning and education only, not financial advice. Check your address on FEMA's Flood Map Service Center.</p>
     </div>
     <nav aria-label="Footer">
       <a href="#why">Why risk is changing</a>
@@ -510,11 +488,11 @@ function render() {
 
   document.getElementById('statNow').textContent = pct(r.atLeastNow);
   document.getElementById('statNowLbl').textContent =
-    `Chance your home, as it is, floods at least once in ${T} years${oneIn(r.atLeastNow)}. By year ${T} the yearly chance is ${pct(r.probNow[T - 1] / 100)}, up from ${pct(p.p0)} today.`;
+    `Chance of at least one flood in ${T} years${oneIn(r.atLeastNow)}`;
   document.getElementById('statRaised').textContent = p.raise > 0 ? pct(r.atLeastRaised) : '-';
   document.getElementById('statRaisedLbl').textContent = p.raise > 0
-    ? `Same chance if you elevate it ${p.raise} ft${oneIn(r.atLeastRaised)}. Its yearly chance in year ${T}: ${pct(r.probRaised[T - 1] / 100)}.`
-    : 'Use the "Elevate the home by" slider to see how elevation changes your odds.';
+    ? `Same, elevated ${p.raise} ft${oneIn(r.atLeastRaised)}`
+    : 'Set an elevation to compare';
   document.getElementById('statFlood').textContent = usd(r.pf.dmg);
 
   const labels = [0, ...r.years];
@@ -532,8 +510,8 @@ function render() {
   costChart.data.datasets[3].data = labels.map(() => r.moveTotal / 1000);
   costChart.update();
 
-  document.getElementById('legRaised1').textContent = p.raise > 0 ? `Home elevated ${p.raise} ft` : 'Elevated home (set the elevation slider)';
-  document.getElementById('legRaised2').textContent = p.raise > 0 ? `Elevate ${p.raise} ft + insure` : 'Elevate + insure (same as Insure at 0 ft)';
+  document.getElementById('legRaised1').textContent = p.raise > 0 ? `Home elevated ${p.raise} ft` : 'Elevated home';
+  document.getElementById('legRaised2').textContent = p.raise > 0 ? `Elevate ${p.raise} ft + insure` : 'Elevate + insure';
 
   document.getElementById('tableCaption').textContent = `Comparing the options over ${T} years`;
   const best = r.rows.reduce((a, b) => (b.total < a.total ? b : a));
@@ -541,19 +519,19 @@ function render() {
     <tr class="${row === best ? 'best' : ''}">
       <th scope="row" style="font-weight:${row === best ? 700 : 400}"><span class="swatch" style="--c:var(${row.c})"></span>${row.name}</th>
       <td>${usd(row.up)}</td><td>${usd(row.yearly)}</td><td>${usd(row.total)}</td>
-      <td>${row.key === 'move' ? '0% (you\'ve left)' : pct(row.flood)}</td><td>${usd(row.bill)}</td>
+      <td>${row.key === 'move' ? '0%' : pct(row.flood)}</td><td>${usd(row.bill)}</td>
     </tr>`).join('');
 
   // Takeaway
   const ins = r.rows[1], raise = r.rows[2], un = r.rows[0];
-  let msg = `<b>With these settings:</b> the option with the lowest average cost is <b>${best.name}</b> (${usd(best.total)} over ${T} years). `;
+  let msg = `<b>Cheapest on average:</b> ${best.name} (${usd(best.total)}). `;
   if (p.raise > 0) {
     const diff = ins.total - raise.total;
     msg += diff > 0
-      ? `Elevating ${p.raise} ft saves about ${usd(diff)} compared with insurance alone, because the up-front ${usd(raise.up)} is earned back through smaller premiums and repair bills. `
-      : `Elevating ${p.raise} ft costs ${usd(-diff)} more than insurance alone. The flood risk isn't high enough to earn back the ${usd(raise.up)} up-front cost. `;
+      ? `Elevating ${p.raise} ft saves ${usd(diff)} vs. insurance alone. `
+      : `Elevating ${p.raise} ft costs ${usd(-diff)} more than insurance alone. `;
   }
-  msg += `Going without insurance looks cheapest on average only if you can absorb a ${usd(un.bill)} repair bill, and there's a ${pct(un.flood)} chance you'll face at least one.`;
+  if (best.key === 'un') msg += `But skipping insurance means a ${pct(un.flood)} chance of a ${usd(un.bill)} bill.`;
   document.getElementById('takeaway').innerHTML = msg;
 }
 
