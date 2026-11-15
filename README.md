@@ -19,7 +19,9 @@ Course concepts: return periods (what a "100-year flood" means over a mortgage),
 
 ## Group members
 
-- _Add names here_
+- Carolin
+- Taelor
+- Sophie
 
 ## Running it locally
 
