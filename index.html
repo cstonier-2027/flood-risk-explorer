@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Flood Risk Explorer</title>
-<meta name="description" content="Should a homeowner in a floodplain raise the house, buy flood insurance, or move? Move the sliders and see how rising seas change the answer.">
+<title>HighGround Flood Planner</title>
+<meta name="description" content="See what elevating, insuring, or relocating would cost a flood-prone home as sea levels rise over a 30-year mortgage.">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
 :root {
@@ -53,7 +53,7 @@ body {
   margin: 0; background: var(--bg); color: var(--text);
   font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
-main { max-width: 1100px; margin: 0 auto; padding: 32px 16px 64px; }
+main { max-width: 1100px; margin: 0 auto; padding: 8px 16px 0; }
 h1 { font-size: clamp(1.7rem, 4vw, 2.4rem); line-height: 1.15; margin: 0 0 12px; }
 h2 { font-size: 1.3rem; margin: 40px 0 8px; }
 h3 { font-size: 1.05rem; margin: 0 0 6px; }
@@ -112,44 +112,84 @@ summary { cursor: pointer; font-weight: 600; }
   border: 1px solid var(--border); background: var(--bg); color: var(--text); }
 ol.sources li { margin-bottom: 6px; color: var(--text-2); }
 code { font-size: 0.92em; }
-footer { margin-top: 48px; font-size: 0.9rem; color: var(--text-2); }
+html { scroll-behavior: smooth; }
+section[id] { scroll-margin-top: 72px; }
+.site-header { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
+.header-inner, .footer-inner { max-width: 1100px; margin: 0 auto; padding: 12px 16px; display: flex;
+  align-items: center; justify-content: space-between; gap: 16px; }
+.brand { display: inline-flex; align-items: center; gap: 8px; font-weight: 800; font-size: 1.1rem;
+  color: var(--text); text-decoration: none; letter-spacing: -.01em; }
+.logo { width: 22px; height: 22px; border-radius: 6px; background:
+  linear-gradient(180deg, var(--accent) 0 55%, color-mix(in srgb, var(--accent) 45%, var(--surface)) 55% 100%); }
+.site-header nav, .site-footer nav { display: flex; gap: 18px; flex-wrap: wrap; }
+.site-header nav a, .site-footer nav a { color: var(--text-2); text-decoration: none; font-size: 0.95rem; }
+.site-header nav a:hover, .site-footer nav a:hover { color: var(--text); }
+@media (max-width: 560px) { .site-header nav a:not([href="#tool"]) { display: none; } }
+.hero { padding: 40px 0 8px; }
+.eyebrow { color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: .06em; font-size: 0.85rem; margin-bottom: 8px; }
+.hero h1 { font-size: clamp(2rem, 5vw, 3rem); letter-spacing: -.02em; max-width: 820px; }
+.cta { display: inline-block; margin-top: 8px; background: var(--accent); color: #fff; font-weight: 600;
+  text-decoration: none; padding: 10px 18px; border-radius: 999px; }
+.cta:hover { filter: brightness(1.08); }
+.icon { width: 40px; height: 40px; border-radius: 10px; display: grid; place-items: center; font-weight: 800;
+  background: var(--note-bg); color: var(--accent); margin-bottom: 10px; }
+.site-footer { margin-top: 56px; border-top: 1px solid var(--border); background: var(--surface); }
+.site-footer .footer-inner { align-items: flex-start; padding: 28px 16px 36px; }
+.site-footer p { font-size: 0.9rem; color: var(--text-2); max-width: 560px; margin-top: 8px; }
+@media (max-width: 760px) { .site-footer .footer-inner { flex-direction: column; } }
 </style>
 </head>
 <body>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="#"><span class="logo" aria-hidden="true"></span>HighGround</a>
+    <nav aria-label="Main">
+      <a href="#why">Why</a>
+      <a href="#tool">Calculator</a>
+      <a href="#method">Methodology</a>
+      <a href="#sources">Sources</a>
+    </nav>
+  </div>
+</header>
 <main>
 
-<header>
-  <h1>Raise it, insure it, or move? A flood-risk explorer for homeowners</h1>
-  <p class="lede">You own a house in a floodplain and plan to stay for the next 30 years.
-  Sea levels and heavy rain are rising, so floods that used to be rare are becoming common.
-  Should you spend money now to <b>raise the house</b>, pay every year for <b>flood insurance</b>,
-  or <b>sell and move</b>? Move the sliders to see how the answer changes.</p>
-</header>
+<section class="hero">
+  <p class="eyebrow">Flood planning for homeowners</p>
+  <h1>Is your home ready for the floods of 2055?</h1>
+  <p class="lede">Rising seas and heavier rain are making floods more frequent every year. Plug in your home's
+  flood risk and see what it would cost to <b>elevate</b>, <b>insure</b>, or <b>relocate</b>, and which choice
+  holds up over the life of a 30-year mortgage.</p>
+  <a class="cta" href="#tool">Check your home</a>
+</section>
 
-<section>
-  <h2>The problem in plain language</h2>
+<section id="why">
+  <h2>Why flood risk is changing</h2>
   <div class="grid3">
     <div class="card">
-      <h3>A "100-year flood" isn't once a century</h3>
-      <p class="muted">It means a <b>1% chance every year</b>. Over a 30-year mortgage, that adds up to about a
-      <b>1 in 4</b> chance of being flooded at least once, even if the climate stayed the same.</p>
+      <div class="icon" aria-hidden="true">1%</div>
+      <h3>The "100-year flood" myth</h3>
+      <p class="muted">A 100-year flood has a <b>1% chance of happening in any year</b>, not once a century.
+      Across a 30-year mortgage, that's roughly a <b>1 in 4</b> chance of at least one flood, before climate change is even counted.</p>
     </div>
     <div class="card">
-      <h3>The baseline is rising</h3>
-      <p class="muted">Higher seas and heavier downpours lift every flood a little higher. A small rise in water
-      level makes floods that reach your floor <b>many times more frequent</b>, so this year's 1% house could be a 3% house by the time the mortgage is paid off.</p>
+      <div class="icon" aria-hidden="true">↑</div>
+      <h3>The water line keeps moving up</h3>
+      <p class="muted">Each inch of sea-level rise lifts every future flood. Because big floods are only slightly taller than
+      small ones, a modest rise can make flooding <b>several times more common</b>. A home with a 1% yearly risk today could face 3% by the time the loan is paid off.</p>
     </div>
     <div class="card">
-      <h3>Risk = Hazard × Exposure × Vulnerability</h3>
-      <p class="muted">You can't stop the water (the <i>hazard</i>). But raising the house cuts your
-      <i>exposure</i>, insurance cuts your financial <i>vulnerability</i>, and moving removes both.</p>
+      <div class="icon" aria-hidden="true">×</div>
+      <h3>Three ways to cut your risk</h3>
+      <p class="muted">Flood risk is <i>hazard</i> × <i>exposure</i> × <i>vulnerability</i>. You can't stop the water,
+      but elevating lowers your exposure, insurance limits your financial vulnerability, and relocating takes you out of harm's way.</p>
     </div>
   </div>
 </section>
 
-<section>
-  <h2>Set up your situation</h2>
-  <p class="muted">The first three sliders describe the flood threat. The last one is your decision.</p>
+<section id="tool">
+  <h2>Your home</h2>
+  <p class="muted">Describe your flood risk with the first three sliders, then choose how high to elevate.</p>
   <div class="sliders">
     <div class="card">
       <span class="tag">Hazard today</span>
@@ -170,15 +210,15 @@ footer { margin-top: 48px; font-size: 0.9rem; color: var(--text-2); }
       <p class="slider-help">In flat coastal areas, a rare flood is only a little higher than a common one, so a small rise in sea level makes floods much more frequent. Where floods vary a lot in height (steep river valleys), the same rise matters less. Every foot of rise multiplies flood frequency by 10<sup>1/this&nbsp;number</sup>.</p>
     </div>
     <div class="card">
-      <span class="tag">Your decision</span>
-      <div class="slider-head"><label for="raise">Raise the house by</label><span class="slider-val" id="raiseVal"></span></div>
+      <span class="tag">Your plan</span>
+      <div class="slider-head"><label for="raise">Elevate the home by</label><span class="slider-val" id="raiseVal"></span></div>
       <input type="range" id="raise" min="0" max="10" step="0.5" value="4">
-      <p class="slider-help">Lifting the house onto a taller foundation puts the floor above more floods. It's expensive up front, but it also lowers your insurance premium for the rest of the mortgage.</p>
+      <p class="slider-help">Lifting the home onto a taller foundation puts the living floor above more floods. It costs a lot up front, but it also lowers your insurance premium for as long as you own the home.</p>
     </div>
   </div>
 
   <details>
-    <summary>More assumptions you can change (home value, costs, insurance)</summary>
+    <summary>Advanced settings: home value, costs and insurance</summary>
     <div class="assume card" style="margin-top:12px">
       <div><label for="value">Value of the building (not the land), $</label><input id="value" type="number" min="50000" max="2000000" step="10000" value="250000"></div>
       <div><label for="price">Sale price of the home if you move, $</label><input id="price" type="number" min="50000" max="3000000" step="10000" value="325000"></div>
@@ -194,7 +234,7 @@ footer { margin-top: 48px; font-size: 0.9rem; color: var(--text-2); }
 </section>
 
 <section>
-  <h2>What happens to you</h2>
+  <h2 id="outlook">Your 30-year outlook</h2>
   <div class="grid3">
     <div class="card stat"><div class="num" id="statNow"></div><div class="lbl" id="statNowLbl"></div></div>
     <div class="card stat"><div class="num" id="statRaised"></div><div class="lbl" id="statRaisedLbl"></div></div>
@@ -206,8 +246,8 @@ footer { margin-top: 48px; font-size: 0.9rem; color: var(--text-2); }
       <h3>Chance of a flood reaching your floor, year by year</h3>
       <div class="chart-sub">Annual chance (%) vs. years from now</div>
       <div class="legend">
-        <span style="--c:var(--s-uninsured)">House as it is now</span>
-        <span style="--c:var(--s-raised)" id="legRaised1">House raised</span>
+        <span style="--c:var(--s-uninsured)">Home as it is</span>
+        <span style="--c:var(--s-raised)" id="legRaised1">Elevated home</span>
       </div>
       <div class="chart-wrap"><canvas id="probChart" aria-label="Line chart of the annual chance of flooding each year" role="img"></canvas></div>
     </div>
@@ -215,10 +255,10 @@ footer { margin-top: 48px; font-size: 0.9rem; color: var(--text-2); }
       <h3>Expected total cost of each choice over time</h3>
       <div class="chart-sub">Cumulative cost in thousands of dollars vs. years from now (average outcome)</div>
       <div class="legend">
-        <span style="--c:var(--s-uninsured)">Do nothing (no insurance)</span>
-        <span style="--c:var(--s-insured)">Buy insurance only</span>
-        <span style="--c:var(--s-raised)" id="legRaised2">Raise + insure</span>
-        <span class="dash" style="--c:var(--s-move)">Sell and move</span>
+        <span style="--c:var(--s-uninsured)">Stay uninsured</span>
+        <span style="--c:var(--s-insured)">Insure</span>
+        <span style="--c:var(--s-raised)" id="legRaised2">Elevate + insure</span>
+        <span class="dash" style="--c:var(--s-move)">Relocate</span>
       </div>
       <div class="chart-wrap"><canvas id="costChart" aria-label="Line chart of cumulative cost of each option" role="img"></canvas></div>
     </div>
@@ -246,37 +286,37 @@ footer { margin-top: 48px; font-size: 0.9rem; color: var(--text-2); }
 </section>
 
 <section>
-  <h2>What to notice when you move the sliders</h2>
+  <h2 id="insights">What drives the results</h2>
   <div class="grid2">
     <div class="card">
-      <h3>Climate change rewards acting early</h3>
-      <p class="muted">Set the water-level rise to 0 ft and raising the house rarely pays off. Push it to 2–3 ft and
-      the "do nothing" and "insurance only" lines bend sharply upward in the later years, while the raised house stays flat.
-      The rising baseline turns a rare risk into a routine one within a single mortgage.</p>
+      <h3>The later years matter most</h3>
+      <p class="muted">With no water-level rise, elevating rarely pays for itself. At 2–3 ft of rise, the uninsured and
+      insured cost lines curve sharply upward toward the end of the 30 years, while the elevated home's line stays nearly flat.
+      A risk that's rare when you buy can become routine before you sell.</p>
     </div>
     <div class="card">
-      <h3>The sliders work together</h3>
-      <p class="muted">The same 1 ft of rise does far more damage where the 10-year and 100-year floods are close in height
-      (try 0.5 ft) than where they're far apart (try 5 ft). The hazard slider's effect depends on your location,
-      and the raise slider works against both of them.</p>
+      <h3>Location changes everything</h3>
+      <p class="muted">One foot of rise is a much bigger deal where the 10-year and 100-year floods are close in height
+      (try 0.5 ft) than where they're far apart (try 5 ft). The same climate change can mean very different outcomes
+      for two homes a few miles apart.</p>
     </div>
     <div class="card">
-      <h3>Insurance costs more than it pays out, on average</h3>
-      <p class="muted">The insured line usually sits a little <i>above</i> the uninsured line, because insurers charge more than they
-      expect to pay. Insurance isn't about saving money on average. It protects you from a single $50,000–$100,000 bill
-      you might not survive financially (see the last column of the table). Most lenders require it in the 100-year floodplain anyway.</p>
+      <h3>Insurance is protection, not a bargain</h3>
+      <p class="muted">The insured line usually runs slightly <i>above</i> the uninsured one, because premiums include a markup over
+      expected claims. What you're buying is protection from a single $50,000–$100,000 repair bill (see the last column of the table).
+      Most mortgage lenders also require flood insurance in the 100-year floodplain.</p>
     </div>
     <div class="card">
-      <h3>Raising the house beats the flood, not the bill</h3>
-      <p class="muted">Each foot of height divides the flood chance by the same factor the water-level rise multiplies it by.
-      Raising by more than the expected rise keeps you safer than you are today. But with a low starting risk,
-      the up-front cost may never be earned back. Try the 0.2% (500-year) setting.</p>
+      <h3>Elevation buys safety first, savings second</h3>
+      <p class="muted">Each foot of elevation cuts flood odds by the same factor that a foot of water-level rise multiplies them.
+      Elevating more than the expected rise leaves you safer than you are today. But if your starting risk is low, the
+      up-front cost may never pay off. Try the 0.2% (500-year) setting.</p>
     </div>
   </div>
 </section>
 
-<section>
-  <h2>How the numbers are calculated</h2>
+<section id="method">
+  <h2>Methodology</h2>
   <div class="card">
     <ol>
       <li><b>Flood chance each year.</b> Floods higher than a given level get rarer by a factor of 10 for every
@@ -290,7 +330,7 @@ footer { margin-top: 48px; font-size: 0.9rem; color: var(--text-2); }
         depth–damage curve for a one-story house without a basement (e.g. 1 ft → 23%, 3 ft → 40%, 6 ft → 59%).</li>
       <li><b>Insurance.</b> Covers damage up to the National Flood Insurance Program limit of $250,000 for the building, minus the deductible.
         The premium is the expected payout each year plus the markup, so it rises as the risk rises (FEMA's Risk Rating 2.0 prices policies by actual risk).</li>
-      <li><b>Raising.</b> One up-front cost (base + cost per foot), then lower flood chances and lower premiums from then on.</li>
+      <li><b>Elevating.</b> One up-front cost (base + cost per foot), then lower flood chances and lower premiums from then on.</li>
       <li><b>Moving.</b> Selling costs (agent fees, closing costs, moving) plus the price cut buyers demand for a flood-prone house, paid once. After that, no flood risk. You can't fully escape the risk by selling, because the next owner prices it in.</li>
     </ol>
     <p class="muted"><b>Simplifications:</b> costs aren't discounted for inflation or interest; at most one damaging flood per year;
@@ -299,7 +339,7 @@ footer { margin-top: 48px; font-size: 0.9rem; color: var(--text-2); }
   </div>
 </section>
 
-<section>
+<section id="sources">
   <h2>Sources</h2>
   <ol class="sources">
     <li>FEMA, "Flood Zones" and the definition of the Special Flood Hazard Area (1% annual chance flood). fema.gov/flood-maps</li>
@@ -312,10 +352,22 @@ footer { margin-top: 48px; font-size: 0.9rem; color: var(--text-2); }
   </ol>
 </section>
 
-<footer>
-  Built for a class project on climate risk. The numbers are for learning, not financial advice. For a real house, check your FEMA flood map and get an elevation certificate and insurance quote.
-</footer>
 </main>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <div class="brand"><span class="logo" aria-hidden="true"></span>HighGround</div>
+      <p>Estimates are for planning and education only, not financial or insurance advice. For a real decision, look up your
+      address on the FEMA Flood Map Service Center, get an elevation certificate, and request an insurance quote.</p>
+    </div>
+    <nav aria-label="Footer">
+      <a href="#why">Why risk is changing</a>
+      <a href="#tool">Check your home</a>
+      <a href="#method">Methodology</a>
+      <a href="#sources">Sources</a>
+    </nav>
+  </div>
+</footer>
 
 <script>
 // ---------- Model ----------
@@ -384,10 +436,10 @@ function compute(p) {
     pf, years, probNow, probRaised, cumUn, cumIns, cumRaise, elevCost, moveTotal,
     atLeastNow: 1 - noFloodNow, atLeastRaised: 1 - noFloodRaised,
     rows: [
-      { key: 'un', name: 'Do nothing (no insurance)', c: '--s-uninsured', up: 0, yearly: dmgUn, total: cumUn[p.T], flood: 1 - noFloodNow, bill: pf.dmg },
-      { key: 'ins', name: 'Buy insurance only', c: '--s-insured', up: 0, yearly: premiumsIns + ownIns, total: cumIns[p.T], flood: 1 - noFloodNow, bill: pf.own },
-      { key: 'raise', name: p.raise > 0 ? `Raise ${p.raise} ft + insure` : 'Raise + insure (raise slider is at 0)', c: '--s-raised', up: elevCost, yearly: premiumsR + ownR, total: cumRaise[p.T], flood: 1 - noFloodRaised, bill: pf.own },
-      { key: 'move', name: 'Sell and move', c: '--s-move', up: moveTotal, yearly: 0, total: moveTotal, flood: 0, bill: 0 },
+      { key: 'un', name: 'Stay uninsured', c: '--s-uninsured', up: 0, yearly: dmgUn, total: cumUn[p.T], flood: 1 - noFloodNow, bill: pf.dmg },
+      { key: 'ins', name: 'Insure', c: '--s-insured', up: 0, yearly: premiumsIns + ownIns, total: cumIns[p.T], flood: 1 - noFloodNow, bill: pf.own },
+      { key: 'raise', name: p.raise > 0 ? `Elevate ${p.raise} ft + insure` : 'Elevate + insure (elevation set to 0)', c: '--s-raised', up: elevCost, yearly: premiumsR + ownR, total: cumRaise[p.T], flood: 1 - noFloodRaised, bill: pf.own },
+      { key: 'move', name: 'Relocate', c: '--s-move', up: moveTotal, yearly: 0, total: moveTotal, flood: 0, bill: 0 },
     ],
   };
 }
@@ -428,18 +480,18 @@ function makeCharts() {
   probChart = new Chart(document.getElementById('probChart'), {
     type: 'line',
     data: { labels: [], datasets: [
-      { label: 'House as it is now', data: [], borderColor: css('--s-uninsured') },
-      { label: 'House raised', data: [], borderColor: css('--s-raised') },
+      { label: 'Home as it is', data: [], borderColor: css('--s-uninsured') },
+      { label: 'Elevated home', data: [], borderColor: css('--s-raised') },
     ] },
     options: baseOpts('Annual chance of flooding (%)', v => (v < 1 ? v.toFixed(2) : v < 10 ? v.toFixed(1) : v.toFixed(0)) + '%'),
   });
   costChart = new Chart(document.getElementById('costChart'), {
     type: 'line',
     data: { labels: [], datasets: [
-      { label: 'Do nothing (no insurance)', data: [], borderColor: css('--s-uninsured') },
-      { label: 'Buy insurance only', data: [], borderColor: css('--s-insured') },
-      { label: 'Raise + insure', data: [], borderColor: css('--s-raised') },
-      { label: 'Sell and move', data: [], borderColor: css('--s-move'), borderDash: [6, 4] },
+      { label: 'Stay uninsured', data: [], borderColor: css('--s-uninsured') },
+      { label: 'Insure', data: [], borderColor: css('--s-insured') },
+      { label: 'Elevate + insure', data: [], borderColor: css('--s-raised') },
+      { label: 'Relocate', data: [], borderColor: css('--s-move'), borderDash: [6, 4] },
     ] },
     options: baseOpts('Cumulative cost (thousands of $)', v => '$' + (v >= 100 ? v.toFixed(0) : v.toFixed(1)) + 'k'),
   });
@@ -458,30 +510,30 @@ function render() {
 
   document.getElementById('statNow').textContent = pct(r.atLeastNow);
   document.getElementById('statNowLbl').textContent =
-    `Chance the house as it is now floods at least once in ${T} years${oneIn(r.atLeastNow)}. By year ${T} the yearly chance is ${pct(r.probNow[T - 1] / 100)}, up from ${pct(p.p0)} today.`;
+    `Chance your home, as it is, floods at least once in ${T} years${oneIn(r.atLeastNow)}. By year ${T} the yearly chance is ${pct(r.probNow[T - 1] / 100)}, up from ${pct(p.p0)} today.`;
   document.getElementById('statRaised').textContent = p.raise > 0 ? pct(r.atLeastRaised) : '-';
   document.getElementById('statRaisedLbl').textContent = p.raise > 0
-    ? `Same chance if you raise the house ${p.raise} ft${oneIn(r.atLeastRaised)}. Its yearly chance in year ${T}: ${pct(r.probRaised[T - 1] / 100)}.`
-    : 'Move the "Raise the house by" slider to see how elevation changes your odds.';
+    ? `Same chance if you elevate it ${p.raise} ft${oneIn(r.atLeastRaised)}. Its yearly chance in year ${T}: ${pct(r.probRaised[T - 1] / 100)}.`
+    : 'Use the "Elevate the home by" slider to see how elevation changes your odds.';
   document.getElementById('statFlood').textContent = usd(r.pf.dmg);
 
   const labels = [0, ...r.years];
   probChart.data.labels = r.years;
   probChart.data.datasets[0].data = r.probNow;
   probChart.data.datasets[1].data = p.raise > 0 ? r.probRaised : [];
-  probChart.data.datasets[1].label = `House raised ${p.raise} ft`;
+  probChart.data.datasets[1].label = `Home elevated ${p.raise} ft`;
   probChart.update();
 
   costChart.data.labels = labels;
   costChart.data.datasets[0].data = r.cumUn.map(v => v / 1000);
   costChart.data.datasets[1].data = r.cumIns.map(v => v / 1000);
   costChart.data.datasets[2].data = r.cumRaise.map(v => v / 1000);
-  costChart.data.datasets[2].label = p.raise > 0 ? `Raise ${p.raise} ft + insure` : 'Raise + insure';
+  costChart.data.datasets[2].label = p.raise > 0 ? `Elevate ${p.raise} ft + insure` : 'Elevate + insure';
   costChart.data.datasets[3].data = labels.map(() => r.moveTotal / 1000);
   costChart.update();
 
-  document.getElementById('legRaised1').textContent = p.raise > 0 ? `House raised ${p.raise} ft` : 'House raised (set the raise slider)';
-  document.getElementById('legRaised2').textContent = p.raise > 0 ? `Raise ${p.raise} ft + insure` : 'Raise + insure (same as insurance at 0 ft)';
+  document.getElementById('legRaised1').textContent = p.raise > 0 ? `Home elevated ${p.raise} ft` : 'Elevated home (set the elevation slider)';
+  document.getElementById('legRaised2').textContent = p.raise > 0 ? `Elevate ${p.raise} ft + insure` : 'Elevate + insure (same as Insure at 0 ft)';
 
   document.getElementById('tableCaption').textContent = `Comparing the options over ${T} years`;
   const best = r.rows.reduce((a, b) => (b.total < a.total ? b : a));
@@ -494,12 +546,12 @@ function render() {
 
   // Takeaway
   const ins = r.rows[1], raise = r.rows[2], un = r.rows[0];
-  let msg = `<b>With these settings:</b> the lowest average cost is <b>${best.name.toLowerCase()}</b> (${usd(best.total)} over ${T} years). `;
+  let msg = `<b>With these settings:</b> the option with the lowest average cost is <b>${best.name}</b> (${usd(best.total)} over ${T} years). `;
   if (p.raise > 0) {
     const diff = ins.total - raise.total;
     msg += diff > 0
-      ? `Raising the house ${p.raise} ft saves about ${usd(diff)} compared with insurance alone, because the up-front ${usd(raise.up)} is earned back through smaller premiums and repair bills. `
-      : `Raising the house ${p.raise} ft costs ${usd(-diff)} more than insurance alone. The flood risk isn't high enough to earn back the ${usd(raise.up)} up-front cost. `;
+      ? `Elevating ${p.raise} ft saves about ${usd(diff)} compared with insurance alone, because the up-front ${usd(raise.up)} is earned back through smaller premiums and repair bills. `
+      : `Elevating ${p.raise} ft costs ${usd(-diff)} more than insurance alone. The flood risk isn't high enough to earn back the ${usd(raise.up)} up-front cost. `;
   }
   msg += `Going without insurance looks cheapest on average only if you can absorb a ${usd(un.bill)} repair bill, and there's a ${pct(un.flood)} chance you'll face at least one.`;
   document.getElementById('takeaway').innerHTML = msg;

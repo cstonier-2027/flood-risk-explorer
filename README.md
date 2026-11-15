@@ -1,4 +1,4 @@
-# Flood Risk Explorer: Raise it, insure it, or move?
+# HighGround: a flood planner for homeowners
 
 An interactive website for a homeowner in a floodplain who has to decide whether to raise the house, buy flood insurance, or sell and move, as rising sea levels make floods more frequent over a 30-year mortgage.
 
